@@ -170,7 +170,7 @@ async function showObserve(run) {
   drawCard($("card"), run, 0.5);
   $("measure").hidden = false;
   $("measure").disabled = false;
-  $("dl-card").disabled = $("dl-clip").disabled = true;
+  $("dl-card").disabled = $("dl-clip").disabled = $("copy-share").disabled = true;
   $("shots").innerHTML = Array.from({ length: run.coin.shots }, () => '<i class="shot"></i>').join("");
   $("collapse-line").innerHTML = "Press <strong>Measure</strong> to collapse the state.";
 }
