@@ -179,7 +179,8 @@ $("play-wet").addEventListener("click", () => deck.play("wet"));
 $("go-measure").addEventListener("click", () => { player.stop(); go(4); });
 
 // ---------- step 4: measure ----------
-function target(run) { return 1 - run.coin.heads / run.coin.shots; } // heads keep A
+// heads = |A>, tails = |B>; the majority of the shots is the collapsed state
+function target(run) { return run.coin.heads * 2 >= run.coin.shots ? 0 : 1; }
 
 $("measure").addEventListener("click", () => {
   const run = state.run;
@@ -192,9 +193,11 @@ $("measure").addEventListener("click", () => {
   shots.forEach((el, i) => setTimeout(() => el.classList.add(outcomes[i]), 18 * i));
   animateCollapse($("card"), run, target(run), () => {
     state.measured = true;
-    const pa = Math.round((1 - target(run)) * 100);
-    $("collapse-line").innerHTML = `Collapsed: <span class="pa">${pa}% ${run.names[0]}</span> · <span class="pb">${100 - pa}% ${run.names[1]}</span>
-      <br><small style="color:var(--muted)">${run.coin.heads} heads in ${run.coin.shots} shots of one measured qubit.</small>`;
+    const isA = target(run) === 0;
+    const win = isA ? run.names[0] : run.names[1];
+    $("collapse-line").innerHTML = `Measured: <span class="${isA ? "pa" : "pb"}">|${win}⟩</span>
+      <br><small style="color:var(--muted)">${run.coin.heads} shots gave |${run.names[0]}⟩ and ${run.coin.shots - run.coin.heads} gave |${run.names[1]}⟩.
+      The superposition is gone: looking at it picked one of you.</small>`;
     $("dl-card").disabled = $("dl-clip").disabled = false;
   });
 });
