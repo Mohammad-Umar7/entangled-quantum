@@ -199,7 +199,7 @@ $("measure").addEventListener("click", () => {
     $("collapse-line").innerHTML = `Measured: <span class="${isA ? "pa" : "pb"}">|${win}⟩</span>
       <br><small style="color:var(--muted)">${run.coin.heads} shots gave |${run.names[0]}⟩ and ${run.coin.shots - run.coin.heads} gave |${run.names[1]}⟩.
       The superposition is gone: looking at it picked one of you.</small>`;
-    $("dl-card").disabled = $("dl-clip").disabled = false;
+    $("dl-card").disabled = $("dl-clip").disabled = $("copy-share").disabled = false;
   });
 });
 
