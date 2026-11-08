@@ -66,7 +66,7 @@ async function save(res, slot, file) {
 
   const t0 = Date.now();
   const frames = STRENGTHS.map((s, i) => job(`teleblur ${s}`, "telablur-v1", { strength: s, size: 256 }, { image1: a256, image2: b256 }, log)
-    .then((r) => save(r, "result", `frames/f${String(i).padStart(2, "0")}.png`)));
+    .then((r) => save(r, "result", `frames/f${String(i).padStart(2, "0")}.jpg`)));
   const tessaA = job("tessa A", "tessa-image-v1", { shots: 2048, machine: "fake_torino" }, { image: a64 }, log).then((r) => save(r, "result", "tessa_a.png"));
   const tessaB = job("tessa B", "tessa-image-v1", { shots: 2048, machine: "fake_torino" }, { image: b64 }, log).then((r) => save(r, "result", "tessa_b.png"));
   const echo = job("retrocausal echo", "retrocausal-echo-v1", { machine: "aer", bpm: 96, mix: 0.55, depth: 12, n_sites: 8 }, { audio: wavId }, log)
@@ -79,7 +79,7 @@ async function save(res, slot, file) {
     created: new Date().toISOString(),
     total_ms: Date.now() - t0,
     strengths: STRENGTHS,
-    frames: STRENGTHS.map((_, i) => `demo/frames/f${String(i).padStart(2, "0")}.png`),
+    frames: STRENGTHS.map((_, i) => `demo/frames/f${String(i).padStart(2, "0")}.jpg`),
     tessa: ["demo/tessa_a.png", "demo/tessa_b.png"],
     tessa_machine: "fake_torino",
     melody: "demo/melody.wav",
