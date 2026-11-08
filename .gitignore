@@ -1,0 +1,15 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# deps / builds
+node_modules/
+.vercel/
+dist/
+
+# scratch
+*.log
+.DS_Store
+Thumbs.db
+tmp/
