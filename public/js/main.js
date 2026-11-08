@@ -146,6 +146,10 @@ $("go-entangle").addEventListener("click", entangle);
 
 // ---------- step 3: observe ----------
 async function showObserve(run) {
+  // nothing can be measured until every result (frames, sphere, audio) has loaded
+  $("go-measure").disabled = true;
+  $("measure").disabled = true;
+  $("go-measure").textContent = "Loading results…";
   $("recorded-badge").hidden = run.live;
   $("end-a").textContent = run.names[0];
   $("end-b").textContent = run.names[1];
@@ -170,6 +174,8 @@ async function showObserve(run) {
   drawCard($("card"), run, 0.5);
   $("measure").hidden = false;
   $("measure").disabled = false;
+  $("go-measure").disabled = false;
+  $("go-measure").textContent = "Now measure it ⟶";
   $("dl-card").disabled = $("dl-clip").disabled = $("copy-share").disabled = true;
   $("shots").innerHTML = Array.from({ length: run.coin.shots }, () => '<i class="shot"></i>').join("");
   $("collapse-line").innerHTML = "Press <strong>Measure</strong> to collapse the state.";
