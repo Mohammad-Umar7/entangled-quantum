@@ -46,3 +46,22 @@ shows each job as a gate going from queued → running → measured.
 Everything runs on Moth's simulators (Aer, plus a noise model calibrated to a real IBM chip), not on live QPU
 hardware, and none of it needs a quantum computer to be fast. As Moth's CTO said in the Atlas walkthrough,
 the point isn't speed: it's a new way of thinking about media.
+
+## Architecture
+
+```mermaid
+flowchart LR
+  B["Browser<br/>camera · upload · melody synth<br/>player · Bloch sphere · card"] -- "/api/upload · /api/job<br/>/api/status · /api/result · /api/file" --> V["Vercel functions<br/>(key stays here)"]
+  V -- "Bearer MOTH_API_KEY" --> M["Moth Atlas API<br/>assets + jobs"]
+  M --> E1[telablur-v1] & E2[tessa-image-v1] & E3[retrocausal-echo-v1] & E4[coin-toss-v1]
+```
+
+- **Static front end** (`public/`): plain ES modules, no build step. Three.js 0.160 for the Bloch sphere,
+  WebAudio for playback, `MediaRecorder` for clip export.
+- **Serverless proxy** (`api/`): five tiny functions. The Moth key never reaches the browser.
+- **Guard rails** (`lib/guard.js`): only these four engines can be called, every parameter is clamped to
+  cheap simulator-only settings (no QPU submissions), asset ids must be UUIDs, `/api/file` streams outputs by
+  job id only (not an open proxy), plus a per-IP rate limit and a 3-live-runs-per-browser budget.
+- **Demo replay** (`public/demo/`): `scripts/bake-demo.js` ran the full pipeline once on Einstein × Bohr and
+  saved every output with its real job id and timing (`manifest.json`), so the demo is instant and costs
+  nothing.
