@@ -7,6 +7,8 @@ that echoes through a scrambled qubit chain, and finally a measured qubit decide
 
 **▶ Live app: https://entangled-quantum.vercel.app**
 
+![Einstein teleported into Bohr through a qubit register](docs/preview.png)
+
 Built for the **Qiskit Fall Fest 2026 · Quantum Media track** (powered by Moth), Code / Atlas API tier
 (themes: *Make a web app* + *Daisy chain*).
 
