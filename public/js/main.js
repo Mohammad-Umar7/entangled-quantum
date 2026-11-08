@@ -229,6 +229,12 @@ $("copy-share").addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(text); toast("Share text copied."); } catch { toast(text); }
 });
 $("again").addEventListener("click", () => { go(1); });
+// keyboard: M measures once the Measure step is open
+document.addEventListener("keydown", (e) => {
+  if (e.key.toLowerCase() !== "m" || e.target.closest("input, textarea")) return;
+  const btn = $("measure");
+  if (!$("step-measure").hidden && !btn.hidden && !btn.disabled) btn.click();
+});
 
 // ---------- hero + tour ----------
 async function startDemoFlow() {
