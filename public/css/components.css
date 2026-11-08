@@ -155,3 +155,14 @@ input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius
   .flow { grid-template-columns: 1fr 1fr; }
   .shots { grid-template-columns: repeat(10, 1fr); }
 }
+
+/* small phones */
+@media (max-width: 520px) {
+  .slot-actions .btn { padding: 7px 10px; font-size: 12px; }
+  .btn-xl { padding: 14px 24px; font-size: 17px; }
+  .btn-lg { padding: 13px 20px; font-size: 15px; }
+  .choose-foot { flex-direction: column-reverse; align-items: stretch; }
+  .player-controls { grid-template-columns: auto 1fr auto; }
+  .player-controls #play { grid-column: 1 / -1; }
+  .cta-row .btn { width: 100%; }
+}
