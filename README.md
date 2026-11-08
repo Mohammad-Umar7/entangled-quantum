@@ -31,3 +31,18 @@ Built for the **Qiskit Fall Fest 2026 · Quantum Media track** (powered by Moth)
 
 All four run **in parallel** (max 5 jobs in flight to respect the 300 req/min limit), and the circuit view
 shows each job as a gate going from queued → running → measured.
+
+## Why it's quantum (and an honest note)
+
+- **Superposition you can see.** Teleblur's in-between frames are the image *while* it is being rotated through
+  the qubit register. The θ slider lets you sit inside that state.
+- **Measurement destroys it.** The final card can't show the superposition: measuring picks one face, with
+  the odds set by real shots on a measured qubit.
+- **Noise as a material.** Tessa's round trip through IBM Torino's noise model is what a real chip would do
+  to your face.
+- **Negative echoes.** Classical delays only add copies of the sound. Retrocausal Echo's taps come from an
+  out-of-time-order correlator, so some taps are negative and flip the sound's polarity.
+
+Everything runs on Moth's simulators (Aer, plus a noise model calibrated to a real IBM chip), not on live QPU
+hardware, and none of it needs a quantum computer to be fast. As Moth's CTO said in the Atlas walkthrough,
+the point isn't speed: it's a new way of thinking about media.
