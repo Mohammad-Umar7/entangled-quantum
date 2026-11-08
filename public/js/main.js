@@ -216,6 +216,12 @@ $("dl-clip").addEventListener("click", async () => {
   btn.textContent = "⬇ Record 8 s clip";
   btn.disabled = false;
 });
+$("copy-share").addEventListener("click", async () => {
+  const r = state.run;
+  const win = target(r) === 0 ? r.names[0] : r.names[1];
+  const text = `I entangled |${r.names[0]}⟩ ⊗ |${r.names[1]}⟩ on real quantum engines and collapsed into |${win}⟩ (${r.coin.heads}/${r.coin.shots} shots). Try it: https://entangled-quantum.vercel.app`;
+  try { await navigator.clipboard.writeText(text); toast("Share text copied."); } catch { toast(text); }
+});
 $("again").addEventListener("click", () => { go(1); });
 
 // ---------- hero + tour ----------
