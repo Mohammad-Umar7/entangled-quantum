@@ -33,7 +33,7 @@ function iri(g, x0, x1) {
 
 // Draw the portrait area (square) with the frame at strength theta.
 function portrait(g, frames, theta) {
-  const x = 90, y = 200, s = 900;
+  const x = 140, y = 200, s = 800;
   g.save();
   roundRect(g, x, y, s, s, 36);
   g.clip();
@@ -58,27 +58,43 @@ export function drawCard(canvas, run, theta, { collapsed = false } = {}) {
   g.fillText(`|${nA}⟩ ⊗ |${nB}⟩`, 90, 168);
   portrait(g, run.frames, theta);
 
-  const pa = Math.round((1 - theta) * 100);
-  g.font = "700 52px Space Grotesk, sans-serif";
+  // the teleportation path: 7 small frames from A to B
+  const strip = [0, 0.1, 0.3, 0.5, 0.7, 0.9, 1];
+  const sw = 100, gap = (900 - strip.length * sw) / (strip.length - 1);
+  strip.forEach((s, i) => {
+    const x = 90 + i * (sw + gap), y = 1030;
+    g.save();
+    roundRect(g, x, y, sw, sw, 12);
+    g.clip();
+    g.translate(x, y);
+    drawAt(g, run.frames, s, sw);
+    g.restore();
+  });
+
+  // probability bar from the 100 shots
+  const pA = run.coin.heads / run.coin.shots;
+  const bx = 90, by = 1150, bw = 900, bh = 14;
+  g.fillStyle = "#ffb547"; roundRect(g, bx, by, bw * pA, bh, 7); g.fill();
+  g.fillStyle = "#5fd4ff"; roundRect(g, bx + bw * pA, by, bw * (1 - pA), bh, 7); g.fill();
+
+  g.font = "700 50px Space Grotesk, sans-serif";
   if (collapsed) {
-    g.fillStyle = "#ffb547";
-    g.fillText(`${pa}% ${nA}`, 90, 1190);
-    const wa = g.measureText(`${pa}% ${nA}`).width;
-    g.fillStyle = "#6f6a85";
-    g.fillText("  ·  ", 90 + wa, 1190);
-    const wd = g.measureText("  ·  ").width;
-    g.fillStyle = "#5fd4ff";
-    g.fillText(`${100 - pa}% ${nB}`, 90 + wa + wd, 1190);
-    g.font = "400 26px JetBrains Mono, monospace";
+    const win = theta < 0.5 ? nA : nB;
+    g.fillStyle = theta < 0.5 ? "#ffb547" : "#5fd4ff";
+    g.fillText(`Measured: |${win}⟩`, 90, 1232);
+    g.font = "400 25px JetBrains Mono, monospace";
     g.fillStyle = "#a49fb8";
-    g.fillText(`collapsed by ${run.coin.heads}/${run.coin.shots} heads on one measured qubit`, 90, 1240);
+    g.fillText(`${run.coin.heads} × |${nA}⟩  ·  ${run.coin.shots - run.coin.heads} × |${nB}⟩  in ${run.coin.shots} shots of one qubit`, 90, 1276);
   } else {
     g.fillStyle = "#b38cff";
-    g.fillText("superposition…", 90, 1190);
+    g.fillText("superposition…", 90, 1232);
+    g.font = "400 25px JetBrains Mono, monospace";
+    g.fillStyle = "#a49fb8";
+    g.fillText(`${Math.round(pA * 100)}% |${nA}⟩  ·  ${100 - Math.round(pA * 100)}% |${nB}⟩`, 90, 1276);
   }
-  g.font = "400 22px JetBrains Mono, monospace";
+  g.font = "400 21px JetBrains Mono, monospace";
   g.fillStyle = "#6f6a85";
-  g.fillText("Teleblur · Tessa · Retrocausal Echo · Coin Toss  —  Moth Atlas", 90, 1300);
+  g.fillText("Teleblur · Tessa · Retrocausal Echo · Coin Toss  —  Moth Atlas", 90, 1318);
 }
 
 // Collapse animation: flicker through random superposed states, then settle.
