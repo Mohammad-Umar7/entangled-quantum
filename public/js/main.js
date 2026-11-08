@@ -146,6 +146,7 @@ $("go-entangle").addEventListener("click", entangle);
 
 // ---------- step 3: observe ----------
 async function showObserve(run) {
+  $("recorded-badge").hidden = run.live;
   $("end-a").textContent = run.names[0];
   $("end-b").textContent = run.names[1];
   $("tessa-a-name").textContent = run.names[0];
