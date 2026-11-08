@@ -15,7 +15,7 @@
 .topnav a:hover { color: var(--text); text-decoration: none; }
 .topnav .gh { color: var(--text); border: 1px solid var(--line-2); padding: 6px 12px; border-radius: 999px; }
 
-main { width: min(1180px, 100% - 32px); margin: 0 auto; }
+main { width: min(1180px, 100% - 32px); margin: 0 auto; overflow-x: clip; }
 
 /* hero */
 .hero {
