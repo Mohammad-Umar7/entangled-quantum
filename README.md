@@ -12,6 +12,8 @@ that echoes through a scrambled qubit chain, and finally a measured qubit decide
 Built for the **Qiskit Fall Fest 2026 · Quantum Media track** (powered by Moth), Code / Atlas API tier
 (themes: *Make a web app* + *Daisy chain*).
 
+More for judges: [docs/JUDGING.md](docs/JUDGING.md).
+
 ## Try it in 60 seconds (for judges)
 
 1. Open **https://entangled-quantum.vercel.app**. A 3-slide tour explains everything; press **▶ Try Einstein × Bohr**.
