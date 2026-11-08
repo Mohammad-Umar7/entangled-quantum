@@ -16,7 +16,18 @@ const STRENGTHS = [0, 0.01, 0.03, 0.06, 0.1, 0.2, 0.35, 0.5, 0.65, 0.8, 0.9, 0.9
 const ff = (args) => execFileSync("ffmpeg", ["-loglevel", "error", "-y", ...args]);
 const gray8 = (file) => [...execFileSync("ffmpeg", ["-loglevel", "error", "-i", file, "-vf", "scale=4:2,format=gray", "-f", "rawvideo", "-"])];
 
+// At most 6 jobs in flight, so polling stays well inside the 300 req/min limit.
+let slots = 6;
+const queue = [];
+const acquire = () => (slots > 0 ? (slots--, Promise.resolve()) : new Promise((r) => queue.push(r)));
+const release = () => (queue.length ? queue.shift()() : slots++);
+
 async function job(label, engine, params, files, log) {
+  await acquire();
+  try { return await jobInner(label, engine, params, files, log); } finally { release(); }
+}
+
+async function jobInner(label, engine, params, files, log) {
   const t0 = Date.now();
   const sub = await moth.submitJob(engine, params, files);
   const st = await moth.waitJob(sub.job_id);
