@@ -25,4 +25,5 @@ Built with code: Atlas API, a Vercel serverless proxy that keeps the key hidden 
 unit tests and CI.
 
 - Live app: https://entangled-quantum.vercel.app
+- Demo video: https://youtu.be/QdBPTQH0uMg
 - Code: https://github.com/Mohammad-Umar7/entangled-quantum
