@@ -65,3 +65,24 @@ flowchart LR
 - **Demo replay** (`public/demo/`): `scripts/bake-demo.js` ran the full pipeline once on Einstein × Bohr and
   saved every output with its real job id and timing (`manifest.json`), so the demo is instant and costs
   nothing.
+
+## Run it yourself
+
+Requires Node 18+ and a Moth Atlas API key ([create one](https://platform.mothquantum.com/keys)).
+
+```bash
+git clone https://github.com/Mohammad-Umar7/entangled-quantum
+cd entangled-quantum
+cp .env.example .env.local        # then paste your key into .env.local
+node scripts/dev.js               # http://localhost:3000 (static site + api functions, no npm install)
+```
+
+Other scripts:
+
+```bash
+node scripts/probe.js tmp/a.png tmp/b.png   # time an upload + Teleblur + Tessa + coin toss
+node scripts/sweep.js a.jpg b.jpg out/       # Teleblur strength sweep, for tuning the morph
+node scripts/bake-demo.js public/demo/einstein.jpg public/demo/bohr.jpg Einstein Bohr   # re-record the demo
+```
+
+Deploy: `vercel` with `MOTH_API_KEY` set as an environment variable.
