@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entangled — a quantum photobooth for two</title>
+  <meta name="description" content="Two people, one quantum state. Teleport one face into another through qubits, hear it echo through a scrambled qubit chain, then measure who you collapse into. Built on Moth Quantum's Atlas engines.">
+  <meta property="og:title" content="Entangled — a quantum photobooth for two">
+  <meta property="og:description" content="Teleport one face into another through qubits, then measure who you collapse into. Built on Moth Atlas.">
+  <meta property="og:image" content="/og.png">
+  <meta name="theme-color" content="#07060b">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/onboarding.css">
+  <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }</script>
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Entangled home">
+      <span class="brand-mark" aria-hidden="true">⟨ψ⟩</span>
+      <span class="brand-name">Entangled</span>
+    </a>
+    <nav class="topnav">
+      <a href="#how">How it works</a>
+      <a href="#engines">Engines</a>
+      <button class="link-btn" id="replay-tour" type="button">Tour</button>
+      <a class="gh" href="https://github.com/Mohammad-Umar7/entangled-quantum" target="_blank" rel="noopener">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Quantum photobooth · Powered by Moth Atlas</p>
+        <h1>Two people.<br><span class="iri">One quantum state.</span></h1>
+        <p class="lede">Teleport one face into another through qubits, hear your faces echo through a scrambled
+          qubit chain, then <strong>measure</strong> who you collapse into.</p>
+        <div class="cta-row">
+          <button class="btn btn-primary" id="cta-demo" type="button">▶ Try Einstein × Bohr <small>instant</small></button>
+          <button class="btn btn-ghost" id="cta-live" type="button">📸 Entangle your own faces <small>live quantum</small></button>
+        </div>
+        <p class="hero-note">No sign-up. The demo replays a real recorded quantum run; the live mode runs
+          real Moth engines on your two photos in about 30 seconds.</p>
+      </div>
+      <div class="hero-orb" aria-hidden="true">
+        <canvas id="hero-canvas" width="420" height="420"></canvas>
+        <div class="orb-ring"></div>
+        <div class="orb-labels"><span>|Einstein⟩</span><span>|Bohr⟩</span></div>
+      </div>
+    </section>
+
+    <!-- STEPPER -->
+    <nav class="stepper" id="stepper" aria-label="Progress">
+      <ol>
+        <li data-step="1" class="active"><span class="num">1</span><span class="lbl">Choose two faces</span></li>
+        <li data-step="2"><span class="num">2</span><span class="lbl">Entangle</span></li>
+        <li data-step="3"><span class="num">3</span><span class="lbl">Observe</span></li>
+        <li data-step="4"><span class="num">4</span><span class="lbl">Measure &amp; share</span></li>
+      </ol>
+    </nav>
+
+    <!-- STEP 1: CHOOSE -->
+    <section class="panel" id="step-choose" data-step="1">
+      <header class="panel-head">
+        <span class="step-tag">Step 1</span>
+        <h2>Choose two faces</h2>
+        <p>Take a selfie of each person, upload photos, or use the Einstein × Bohr pair. Faces work best
+          front-on and well lit.</p>
+      </header>
+      <div class="pair">
+        <div class="slot" id="slot-a" data-slot="a">
+          <div class="slot-frame"><img alt="" hidden><div class="slot-empty">|A⟩<small>Person A</small></div></div>
+          <input class="slot-name" maxlength="18" placeholder="Name A" aria-label="Name of person A">
+          <div class="slot-actions">
+            <button class="btn btn-sm" data-act="camera" type="button">📷 Camera</button>
+            <label class="btn btn-sm">⬆ Upload<input type="file" accept="image/*" hidden data-act="upload"></label>
+          </div>
+        </div>
+        <div class="pair-link" aria-hidden="true"><span>⊗</span><small>entangle</small></div>
+        <div class="slot" id="slot-b" data-slot="b">
+          <div class="slot-frame"><img alt="" hidden><div class="slot-empty">|B⟩<small>Person B</small></div></div>
+          <input class="slot-name" maxlength="18" placeholder="Name B" aria-label="Name of person B">
+          <div class="slot-actions">
+            <button class="btn btn-sm" data-act="camera" type="button">📷 Camera</button>
+            <label class="btn btn-sm">⬆ Upload<input type="file" accept="image/*" hidden data-act="upload"></label>
+          </div>
+        </div>
+      </div>
+      <div class="choose-foot">
+        <button class="btn btn-ghost" id="use-demo-pair" type="button">Use Einstein × Bohr</button>
+        <button class="btn btn-primary btn-lg" id="go-entangle" type="button" disabled>Entangle them ⊗</button>
+      </div>
+      <p class="fine" id="budget-note">Live runs use about 13 Moth credits each, so each browser gets 3 live runs. Photos are
+        sent only to the Moth API for processing and are not stored by this site.</p>
+    </section>
+
+    <!-- STEP 2: ENTANGLE -->
+    <section class="panel" id="step-entangle" data-step="2" hidden>
+      <header class="panel-head">
+        <span class="step-tag">Step 2</span>
+        <h2>Entangling <span class="names-inline">A ⊗ B</span></h2>
+        <p id="entangle-sub">Four quantum engines run in parallel on Moth Atlas. Each line is a real job: watch it go
+          from queued to measured.</p>
+      </header>
+      <div class="circuit" id="circuit"></div>
+      <div class="console" id="console" aria-live="polite"></div>
+    </section>
+
+    <!-- STEP 3: OBSERVE -->
+    <section class="panel" id="step-observe" data-step="3" hidden>
+      <header class="panel-head">
+        <span class="step-tag">Step 3</span>
+        <h2>Observe the superposition</h2>
+        <p>Drag θ to move between the two people. In the middle, the image is in neither state: it is
+          half-teleported through the qubit register.</p>
+      </header>
+      <div class="observe-grid">
+        <figure class="card card-player">
+          <div class="player-stage">
+            <canvas id="player" width="512" height="512"></canvas>
+            <div class="player-badge" id="player-badge">θ = 0.00</div>
+          </div>
+          <div class="player-controls">
+            <span class="end end-a" id="end-a">A</span>
+            <input type="range" id="theta" min="0" max="1000" value="0" aria-label="Teleportation strength theta">
+            <span class="end end-b" id="end-b">B</span>
+            <button class="btn btn-sm" id="play" type="button">▶ Oscillate</button>
+          </div>
+          <figcaption>Quantum Teleblur: <code>telablur-v1</code> encodes both faces into qubit amplitudes and rotates one
+            into the other. θ is the rotation strength.</figcaption>
+        </figure>
+
+        <figure class="card card-sphere">
+          <div class="sphere-stage" id="sphere"></div>
+          <figcaption>Your faces on the Bloch sphere. Tessa (<code>tessa-image-v1</code>) turns every pixel into a qubit
+            state (hue → phase φ, brightness → angle θ) and measures it through a simulator calibrated to IBM Torino's
+            noise. Drag to rotate.</figcaption>
+        </figure>
+
+        <figure class="card card-decohere">
+          <div class="decohere-pair">
+            <div><img id="tessa-a" alt="Person A after Tessa encoding with IBM Torino noise"><span id="tessa-a-name">A</span></div>
+            <div><img id="tessa-b" alt="Person B after Tessa encoding with IBM Torino noise"><span id="tessa-b-name">B</span></div>
+          </div>
+          <figcaption>Decoherence portraits: what your faces look like after the round trip through a noisy
+            quantum chip.</figcaption>
+        </figure>
+
+        <figure class="card card-audio">
+          <canvas id="wave" width="640" height="140"></canvas>
+          <div class="audio-row">
+            <button class="btn btn-sm" id="play-dry" type="button">▶ Your melody</button>
+            <button class="btn btn-sm btn-primary" id="play-wet" type="button">▶ Quantum echo</button>
+            <span class="notes" id="notes"></span>
+          </div>
+          <figcaption>Each face becomes 8 notes (brightness → pentatonic pitch). The phrase then goes through
+            Retrocausal Echo (<code>retrocausal-echo-v1</code>): a delay whose taps are measured from an 8-qubit
+            scrambled chain, so negative echoes flip polarity.</figcaption>
+        </figure>
+      </div>
+      <div class="observe-foot">
+        <button class="btn btn-primary btn-lg" id="go-measure" type="button">Now measure it ⟶</button>
+      </div>
+    </section>
+
+    <!-- STEP 4: MEASURE -->
+    <section class="panel" id="step-measure" data-step="4" hidden>
+      <header class="panel-head">
+        <span class="step-tag">Step 4</span>
+        <h2>Measure &amp; share</h2>
+        <p>One qubit, measured 100 times (<code>coin-toss-v1</code>). The share of heads decides how much of each person
+          survives the collapse.</p>
+      </header>
+      <div class="measure-grid">
+        <div class="measure-stage">
+          <canvas id="card" width="1080" height="1350"></canvas>
+          <button class="btn btn-primary btn-xl" id="measure" type="button">Measure ⟨ψ⟩</button>
+        </div>
+        <aside class="measure-side">
+          <div class="readout" id="readout">
+            <div class="shots" id="shots" aria-hidden="true"></div>
+            <p class="collapse-line" id="collapse-line">Press <strong>Measure</strong> to collapse the state.</p>
+          </div>
+          <div class="share-row">
+            <button class="btn" id="dl-card" type="button" disabled>⬇ Download card</button>
+            <button class="btn" id="dl-clip" type="button" disabled>⬇ Record 8 s clip</button>
+          </div>
+          <button class="btn btn-ghost" id="again" type="button">↺ Entangle another pair</button>
+        </aside>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="info" id="how">
+      <h2>How it works</h2>
+      <div class="flow">
+        <div><b>1 · Encode</b><p>Both photos are squared to 256 px and uploaded to Moth Atlas as assets.</p></div>
+        <div><b>2 · Teleport</b><p>Teleblur runs at 9 rotation strengths θ ∈ [0, 1], giving frames from A through scrambled to B.</p></div>
+        <div><b>3 · Decohere</b><p>Tessa sends each face's colours through a simulator with IBM Torino's noise.</p></div>
+        <div><b>4 · Echo</b><p>Your faces become a melody, which goes through a quantum-measured multi-tap delay.</p></div>
+        <div><b>5 · Measure</b><p>A single qubit is measured 100 times. heads/100 picks the frame you collapse into.</p></div>
+      </div>
+      <p class="honest"><b>Honest note.</b> Jobs run on Moth's simulators (Aer, plus a noise model calibrated to a real
+        IBM chip), not on live QPU hardware, and nothing here needs a quantum computer to be fast. As Moth's CTO put
+        it, the point is a new way of thinking about media: two images held in one quantum state, randomness with
+        structure, echoes with negative amplitudes.</p>
+    </section>
+
+    <section class="info" id="engines">
+      <h2>Moth engines used</h2>
+      <div class="engine-grid" id="engine-grid"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Built by Mohammad Umar (Al Ain University) for the Qiskit Fall Fest 2026 Quantum Media track, powered by
+      <a href="https://platform.mothquantum.com" target="_blank" rel="noopener">Moth Quantum Atlas</a>.
+      Einstein (F. Schmutzer, 1921) and Bohr (1922) portraits are in the public domain, via Wikimedia Commons.</p>
+  </footer>
+
+  <!-- camera modal -->
+  <dialog class="modal" id="camera-modal">
+    <div class="cam-wrap">
+      <video id="cam" playsinline muted></video>
+      <div class="cam-guide" aria-hidden="true"></div>
+      <div class="cam-count" id="cam-count"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="cam-cancel" type="button">Cancel</button>
+      <button class="btn btn-primary" id="cam-snap" type="button">Snap (3 s)</button>
+    </div>
+  </dialog>
+
+  <!-- onboarding -->
+  <div class="tour" id="tour" hidden>
+    <div class="tour-card" role="dialog" aria-modal="true" aria-labelledby="tour-title">
+      <div class="tour-dots" id="tour-dots"></div>
+      <div class="tour-body" id="tour-body"></div>
+      <div class="tour-actions">
+        <button class="btn btn-ghost" id="tour-skip" type="button">Skip</button>
+        <button class="btn btn-primary" id="tour-next" type="button">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+
+  <script src="/js/melody.js"></script>
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
