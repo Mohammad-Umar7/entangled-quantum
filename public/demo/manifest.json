@@ -1,0 +1,270 @@
+{
+  "names": [
+    "Einstein",
+    "Bohr"
+  ],
+  "created": "2026-11-08T05:21:18.953Z",
+  "total_ms": 68917,
+  "strengths": [
+    0,
+    0.01,
+    0.03,
+    0.06,
+    0.1,
+    0.2,
+    0.35,
+    0.5,
+    0.65,
+    0.8,
+    0.9,
+    0.94,
+    0.97,
+    0.99,
+    1
+  ],
+  "frames": [
+    "demo/frames/f00.jpg",
+    "demo/frames/f01.jpg",
+    "demo/frames/f02.jpg",
+    "demo/frames/f03.jpg",
+    "demo/frames/f04.jpg",
+    "demo/frames/f05.jpg",
+    "demo/frames/f06.jpg",
+    "demo/frames/f07.jpg",
+    "demo/frames/f08.jpg",
+    "demo/frames/f09.jpg",
+    "demo/frames/f10.jpg",
+    "demo/frames/f11.jpg",
+    "demo/frames/f12.jpg",
+    "demo/frames/f13.jpg",
+    "demo/frames/f14.jpg"
+  ],
+  "tessa": [
+    "demo/tessa_a.png",
+    "demo/tessa_b.png"
+  ],
+  "tessa_machine": "fake_torino",
+  "melody": "demo/melody.wav",
+  "notes": [
+    392,
+    392,
+    329.63,
+    261.63,
+    440,
+    392,
+    293.66,
+    261.63,
+    329.63,
+    587.33,
+    440,
+    329.63,
+    329.63,
+    659.25,
+    440,
+    293.66
+  ],
+  "echo": "demo/echo.wav",
+  "coin": {
+    "heads": 45,
+    "shots": 100
+  },
+  "portraits": [
+    "demo/einstein.jpg",
+    "demo/bohr.jpg"
+  ],
+  "jobs": [
+    {
+      "label": "teleblur 0.01",
+      "engine": "telablur-v1",
+      "job_id": "1d4e7fba-dd0d-44f9-b96c-361aa3a6c923",
+      "params": {
+        "strength": 0.01,
+        "size": 256
+      },
+      "ms": 8067
+    },
+    {
+      "label": "teleblur 0",
+      "engine": "telablur-v1",
+      "job_id": "fd923af2-4f1e-4f1f-8ce8-04296c52d9a4",
+      "params": {
+        "strength": 0,
+        "size": 256
+      },
+      "ms": 10992
+    },
+    {
+      "label": "teleblur 0.03",
+      "engine": "telablur-v1",
+      "job_id": "c4b348be-4f83-4899-b9c1-465cc5c55c67",
+      "params": {
+        "strength": 0.03,
+        "size": 256
+      },
+      "ms": 14601
+    },
+    {
+      "label": "teleblur 0.06",
+      "engine": "telablur-v1",
+      "job_id": "eac267cf-bcf7-433b-a0e8-f48a5b65a056",
+      "params": {
+        "strength": 0.06,
+        "size": 256
+      },
+      "ms": 14837
+    },
+    {
+      "label": "teleblur 0.1",
+      "engine": "telablur-v1",
+      "job_id": "2b2d1b33-59c6-4b57-b66e-d99f8c58ea25",
+      "params": {
+        "strength": 0.1,
+        "size": 256
+      },
+      "ms": 15248
+    },
+    {
+      "label": "teleblur 0.2",
+      "engine": "telablur-v1",
+      "job_id": "9eb1d293-7894-4799-a4d4-daaddcb4cf0b",
+      "params": {
+        "strength": 0.2,
+        "size": 256
+      },
+      "ms": 15380
+    },
+    {
+      "label": "teleblur 0.5",
+      "engine": "telablur-v1",
+      "job_id": "72f9b947-5092-4aaf-8d5d-b0ff0c18374d",
+      "params": {
+        "strength": 0.5,
+        "size": 256
+      },
+      "ms": 6146
+    },
+    {
+      "label": "teleblur 0.35",
+      "engine": "telablur-v1",
+      "job_id": "17764373-cd1d-41d7-8293-5f27a0cb25a4",
+      "params": {
+        "strength": 0.35,
+        "size": 256
+      },
+      "ms": 9422
+    },
+    {
+      "label": "teleblur 0.8",
+      "engine": "telablur-v1",
+      "job_id": "3883aeef-116f-41c3-8cef-59c40ce323e5",
+      "params": {
+        "strength": 0.8,
+        "size": 256
+      },
+      "ms": 5990
+    },
+    {
+      "label": "teleblur 0.9",
+      "engine": "telablur-v1",
+      "job_id": "15a7b3dd-9ab4-48c8-ab2a-4fd095395081",
+      "params": {
+        "strength": 0.9,
+        "size": 256
+      },
+      "ms": 9434
+    },
+    {
+      "label": "teleblur 0.65",
+      "engine": "telablur-v1",
+      "job_id": "38244ec0-f8b3-40fb-91c7-711b320b378f",
+      "params": {
+        "strength": 0.65,
+        "size": 256
+      },
+      "ms": 10358
+    },
+    {
+      "label": "teleblur 0.94",
+      "engine": "telablur-v1",
+      "job_id": "f973b2c9-3313-499a-ad93-d9be40abe018",
+      "params": {
+        "strength": 0.94,
+        "size": 256
+      },
+      "ms": 10038
+    },
+    {
+      "label": "teleblur 0.99",
+      "engine": "telablur-v1",
+      "job_id": "f41e4a12-b635-46fc-be87-98c8ca9e574a",
+      "params": {
+        "strength": 0.99,
+        "size": 256
+      },
+      "ms": 9072
+    },
+    {
+      "label": "teleblur 0.97",
+      "engine": "telablur-v1",
+      "job_id": "fafb60dd-71d1-4ea2-bb21-8bb27a298d01",
+      "params": {
+        "strength": 0.97,
+        "size": 256
+      },
+      "ms": 10054
+    },
+    {
+      "label": "teleblur 1",
+      "engine": "telablur-v1",
+      "job_id": "9703cce0-a700-429f-9d6a-91a3789c6400",
+      "params": {
+        "strength": 1,
+        "size": 256
+      },
+      "ms": 9593
+    },
+    {
+      "label": "coin toss",
+      "engine": "coin-toss-v1",
+      "job_id": "8a7da338-7bf9-4c8b-9925-9030da83f943",
+      "params": {
+        "mode": "emu",
+        "shots": 100
+      },
+      "ms": 5251
+    },
+    {
+      "label": "retrocausal echo",
+      "engine": "retrocausal-echo-v1",
+      "job_id": "36e7758f-2ac5-4b97-ab05-a0d3d83fa4b2",
+      "params": {
+        "machine": "aer",
+        "bpm": 96,
+        "mix": 0.55,
+        "depth": 12,
+        "n_sites": 8
+      },
+      "ms": 13309
+    },
+    {
+      "label": "tessa A",
+      "engine": "tessa-image-v1",
+      "job_id": "e74aa9b7-7fed-4976-aa42-8c3cb27dc0ec",
+      "params": {
+        "shots": 2048,
+        "machine": "fake_torino"
+      },
+      "ms": 29048
+    },
+    {
+      "label": "tessa B",
+      "engine": "tessa-image-v1",
+      "job_id": "89a13555-9f90-4c3b-ac59-fbf04abe607b",
+      "params": {
+        "shots": 2048,
+        "machine": "fake_torino"
+      },
+      "ms": 41395
+    }
+  ]
+}
