@@ -160,7 +160,7 @@ async function showObserve(run) {
   $("tessa-b").src = run.tessa[1];
   $("notes").textContent = `notes: ${run.notes.map((f) => Math.round(f)).join(" ")} Hz`;
   go(3);
-  setTimeout(() => player.play(), 700);
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) setTimeout(() => player.play(), 700);
   const [ia, ib] = await Promise.all(run.tessa.map(loadImage));
   if (sphere) sphere.dispose();
   try {
