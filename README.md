@@ -19,3 +19,15 @@ Built for the **Qiskit Fall Fest 2026 · Quantum Media track** (powered by Moth)
    Download the share card, or record an 8-second clip with sound.
 5. Want your own faces? Use **📸 Camera** or **⬆ Upload** for both people and press **Entangle**: this runs
    all four engines live on Moth Atlas (about 30–60 s, 13 credits).
+
+## The daisy chain: four Moth engines, one story
+
+| Step | Engine | What it does in Entangled | Runs per entanglement |
+|---|---|---|---|
+| **Teleport** | `telablur-v1` (Quantum Teleblur) | Encodes both faces as qubit amplitudes and rotates face A into face B. Running it at many strengths θ ∈ [0, 1] gives every in-between state: at θ ≈ 0.5 the image is *neither* person. | 9 (live) / 15 (demo) |
+| **Decohere** | `tessa-image-v1` (Tessa) | Every pixel becomes a point on the colour sphere (the same coordinates as a qubit state) and is measured through `fake_torino`, a simulator calibrated to IBM Torino's real noise. We plot the measured pixels of both faces on a 3D Bloch sphere. | 2 |
+| **Echo** | `retrocausal-echo-v1` (Retrocausal Echo) | Each face is turned into 8 notes (brightness → pentatonic pitch). The 16-note phrase goes through a multi-tap delay whose taps are measured from a scrambled 8-qubit chain; negative amplitudes flip the echo's polarity. | 1 |
+| **Measure** | `coin-toss-v1` (Coin Toss) | One qubit in superposition, measured 100 times. Heads vote \|A⟩, tails vote \|B⟩; the majority is the state the portrait collapses into. | 1 |
+
+All four run **in parallel** (max 5 jobs in flight to respect the 300 req/min limit), and the circuit view
+shows each job as a gate going from queued → running → measured.
