@@ -95,6 +95,10 @@ export function drawCard(canvas, run, theta, { collapsed = false } = {}) {
   g.font = "400 21px JetBrains Mono, monospace";
   g.fillStyle = "#6f6a85";
   g.fillText("Teleblur · Tessa · Retrocausal Echo · Coin Toss  —  Moth Atlas", 90, 1318);
+  g.textAlign = "right";
+  g.fillStyle = "#a49fb8";
+  g.fillText("entangled-quantum.vercel.app", 990, 120);
+  g.textAlign = "left";
 }
 
 // Collapse animation: flicker through random superposed states, then settle.
