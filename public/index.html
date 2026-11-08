@@ -176,8 +176,8 @@
       <header class="panel-head">
         <span class="step-tag">Step 4</span>
         <h2>Measure &amp; share</h2>
-        <p>One qubit, measured 100 times (<code>coin-toss-v1</code>). The share of heads decides how much of each person
-          survives the collapse.</p>
+        <p>You can't look at a superposition without collapsing it. One qubit is measured 100 times
+          (<code>coin-toss-v1</code>): heads counts for |A⟩, tails for |B⟩, and the majority is who you collapse into.</p>
       </header>
       <div class="measure-grid">
         <div class="measure-stage">
@@ -206,7 +206,7 @@
         <div><b>2 · Teleport</b><p>Teleblur runs at 9 rotation strengths θ ∈ [0, 1], giving frames from A through scrambled to B.</p></div>
         <div><b>3 · Decohere</b><p>Tessa sends each face's colours through a simulator with IBM Torino's noise.</p></div>
         <div><b>4 · Echo</b><p>Your faces become a melody, which goes through a quantum-measured multi-tap delay.</p></div>
-        <div><b>5 · Measure</b><p>A single qubit is measured 100 times. heads/100 picks the frame you collapse into.</p></div>
+        <div><b>5 · Measure</b><p>A single qubit is measured 100 times. Heads vote |A⟩, tails vote |B⟩; the majority is the collapsed state.</p></div>
       </div>
       <p class="honest"><b>Honest note.</b> Jobs run on Moth's simulators (Aer, plus a noise model calibrated to a real
         IBM chip), not on live QPU hardware, and nothing here needs a quantum computer to be fast. As Moth's CTO put
