@@ -100,3 +100,18 @@ public/
   demo/         Einstein × Bohr recorded run: 15 Teleblur frames, Tessa outputs, melody, echo, manifest
 scripts/        dev server, probe, sweep, bake-demo
 ```
+
+## Credits
+
+- Built by **Mohammad Umar** (Software Engineering, Al Ain University) for the Qiskit Fall Fest 2026
+  Quantum Media track, hosted by the Quantum Computing Initiative at Khalifa University and powered by
+  **Moth Quantum**.
+- Quantum engines: [Moth Quantum Atlas](https://docs.mothquantum.com) (Teleblur, Tessa, Retrocausal Echo,
+  Coin Toss).
+- Portraits: Albert Einstein, photographed by Ferdinand Schmutzer (1921), and Niels Bohr (1922); both are in
+  the public domain, via Wikimedia Commons.
+- Libraries: [Three.js](https://threejs.org) 0.160 (MIT). Fonts: Space Grotesk and JetBrains Mono (OFL).
+
+## License
+
+MIT, see [LICENSE](LICENSE).
