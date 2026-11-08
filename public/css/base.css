@@ -1,0 +1,71 @@
+:root {
+  --bg: #07060b;
+  --bg-2: #0e0c16;
+  --panel: rgba(22, 19, 34, 0.72);
+  --panel-solid: #15121f;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-2: rgba(255, 255, 255, 0.16);
+  --text: #f1eefb;
+  --muted: #a49fb8;
+  --dim: #6f6a85;
+  --a: #ffb547;          /* person A: warm amber */
+  --b: #5fd4ff;          /* person B: cool cyan */
+  --q: #b38cff;          /* quantum violet */
+  --ok: #57e3a1;
+  --err: #ff6b8a;
+  --iri: linear-gradient(100deg, #ffb547 0%, #ff6bd6 30%, #b38cff 55%, #5fd4ff 80%, #57e3a1 100%);
+  --radius: 18px;
+  --radius-sm: 10px;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --font: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.55 var(--font);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 { line-height: 1.1; margin: 0 0 0.4em; letter-spacing: -0.02em; }
+p { margin: 0 0 1em; }
+a { color: var(--b); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code { font-family: var(--mono); font-size: 0.86em; background: rgba(179, 140, 255, 0.12); color: #d9c8ff; padding: 0.08em 0.4em; border-radius: 6px; }
+img { max-width: 100%; display: block; }
+[hidden] { display: none !important; }
+
+.iri {
+  background: var(--iri);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: iri-shift 8s ease-in-out infinite alternate;
+}
+@keyframes iri-shift { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+
+.aurora {
+  position: fixed; inset: -20vmax; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(40vmax 30vmax at 15% 10%, rgba(255, 181, 71, 0.10), transparent 60%),
+    radial-gradient(40vmax 30vmax at 85% 20%, rgba(95, 212, 255, 0.10), transparent 60%),
+    radial-gradient(50vmax 40vmax at 50% 90%, rgba(179, 140, 255, 0.12), transparent 60%);
+  filter: blur(20px);
+  animation: drift 24s ease-in-out infinite alternate;
+}
+@keyframes drift { to { transform: translate3d(2vmax, -2vmax, 0) rotate(4deg); } }
+
+:focus-visible { outline: 2px solid var(--q); outline-offset: 3px; border-radius: 8px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
