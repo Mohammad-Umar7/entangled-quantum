@@ -77,7 +77,7 @@ export async function runLive({ canvasA, canvasB, names }, circuit, log) {
       .then(async (r) => ({ s, img: await loadImage(r.outputs[0].url) })));
 
   const [ta, tb, ec, co, ...fr] = await Promise.all([tessaA, tessaB, echo, coin, ...frames]);
-  log(`all ${jobs.length} quantum jobs measured`, "ok");
+  log(`all ${jobs.length} quantum jobs measured · ~13 Moth credits`, "ok");
   const wet = ec.outputs.find((o) => o.slot === "result") || ec.outputs[0];
   return {
     live: true,
