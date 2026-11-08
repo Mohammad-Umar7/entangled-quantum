@@ -5,7 +5,7 @@ engines on [Moth Quantum Atlas](https://platform.mothquantum.com): one face is *
 through qubit rotations, both are measured through a noisy IBM-calibrated chip, your faces become a melody
 that echoes through a scrambled qubit chain, and finally a measured qubit decides **who you collapse into**.
 
-**▶ Live app: https://entangled-quantum.vercel.app**
+**▶ Live app: https://entangled-quantum.vercel.app** · **🎬 Demo video (70 s): https://youtu.be/QdBPTQH0uMg**
 
 ![Einstein teleported into Bohr through a qubit register](docs/preview.png)
 
