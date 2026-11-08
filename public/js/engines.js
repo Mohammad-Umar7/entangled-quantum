@@ -29,7 +29,7 @@ export const ENGINES = [
     name: "Coin Toss",
     wire: "Measure",
     role: "1 qubit × 100 shots",
-    desc: "A single qubit in superposition, measured 100 times. heads / shots is how much of person A survives the collapse.",
+    desc: "A single qubit in superposition, measured 100 times. Heads vote for person A, tails for person B; the majority is the state you collapse into.",
     cost: "2 credits",
   },
 ];
