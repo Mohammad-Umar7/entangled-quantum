@@ -51,7 +51,7 @@
 }
 .wire-label { font-family: var(--mono); font-size: 13px; color: var(--muted); }
 .wire-label b { display: block; font-family: var(--font); font-size: 15px; color: var(--text); }
-.wire-track { position: relative; height: 40px; display: flex; align-items: center; gap: 8px; }
+.wire-track { position: relative; min-height: 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .wire-track::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--line-2); }
 .gate {
   position: relative; z-index: 1; min-width: 38px; height: 34px; padding: 0 8px; border-radius: 8px;
