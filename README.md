@@ -86,3 +86,17 @@ node scripts/bake-demo.js public/demo/einstein.jpg public/demo/bohr.jpg Einstein
 ```
 
 Deploy: `vercel` with `MOTH_API_KEY` set as an environment variable.
+
+## Project layout
+
+```
+api/            Vercel functions: upload, job, status, result, file
+lib/            moth.js (Atlas client with retries), guard.js (whitelist + clamps + rate limit), http.js
+public/
+  index.html    hero, onboarding tour, 4-step flow, how-it-works, engines
+  css/          base, layout, components, onboarding
+  js/           main (flow), pipeline (live + replay), api, circuit, player, sphere, audio, card,
+                capture, onboarding, hero, melody (shared with Node), imageutil, engines
+  demo/         Einstein × Bohr recorded run: 15 Teleblur frames, Tessa outputs, melody, echo, manifest
+scripts/        dev server, probe, sweep, bake-demo
+```
