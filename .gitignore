@@ -15,3 +15,6 @@ Thumbs.db
 tmp/
 
 .vercel
+
+# video build (large media)
+brag-output/
