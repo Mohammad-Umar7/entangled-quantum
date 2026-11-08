@@ -1,0 +1,9 @@
+{
+  "name": "Entangled — a quantum photobooth for two",
+  "short_name": "Entangled",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07060b",
+  "theme_color": "#07060b",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
