@@ -13,7 +13,8 @@ module.exports = async (req, res) => {
     const body = await readJson(req);
     if (!TYPES.has(body.contentType)) return send(res, 400, { error: "unsupported content type" });
     const bytes = Buffer.from(String(body.data || ""), "base64");
-    if (!bytes.length || bytes.length > MAX_BYTES) return send(res, 400, { error: "file empty or too large" });
+    if (!bytes.length) return send(res, 400, { error: "file is empty" });
+    if (bytes.length > MAX_BYTES) return send(res, 413, { error: "file too large (max 1.5 MB)" });
     const name = String(body.filename || "upload").replace(/[^\w.-]/g, "_").slice(0, 60);
     const assetId = await moth.uploadAsset(bytes, name, body.contentType);
     send(res, 200, { asset_id: assetId });
