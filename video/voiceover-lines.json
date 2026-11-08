@@ -1,0 +1,14 @@
+[
+ {"id": "L01", "scene": "hook", "text": "Einstein and Bohr argued about quantum mechanics for thirty years.", "say": "Einstein and Bohr argued about quantum mechanics for thirty years."},
+ {"id": "L02", "scene": "hook", "text": "So we put them in the same quantum state.", "say": "So, we put them in the same quantum state."},
+ {"id": "L03", "scene": "title", "text": "This is Entangled: a quantum photobooth for two, built on Moth Quantum's Atlas engines.", "say": "This is Entangled. A quantum photobooth for two, built on Moth Quantum's Atlas engines."},
+ {"id": "L04", "scene": "choose", "text": "Pick two faces. Take selfies, upload photos, or use the pair that started it all.", "say": "Pick two faces. Take selfies, upload photos, or use the pair that started it all."},
+ {"id": "L05", "scene": "circuit", "text": "Press Entangle, and four quantum engines run in parallel. Every gate is a real job on Atlas.", "say": "Press Entangle, and four quantum engines run in parallel. Every gate is a real job on Atlas."},
+ {"id": "L06", "scene": "teleport", "text": "Teleblur encodes both faces as qubit amplitudes and rotates one into the other.", "say": "Teleblur encodes both faces as qubit amplitudes, and rotates one into the other."},
+ {"id": "L07", "scene": "teleport", "text": "Halfway through, the image isn't Einstein, and it isn't Bohr. It's the superposition.", "say": "Halfway through, the image isn't Einstein. And it isn't Bohr. It's the superposition."},
+ {"id": "L08", "scene": "decohere", "text": "Tessa puts every pixel on a Bloch sphere and measures it through the noise of a real IBM chip.", "say": "Tessa puts every pixel on a Bloch sphere, and measures it through the noise of a real IBM chip."},
+ {"id": "L09", "scene": "echo", "text": "Their faces become a melody. Listen as it echoes through a scrambled eight-qubit chain.", "say": "Their faces become a melody. Listen, as it echoes through a scrambled, eight-qubit chain."},
+ {"id": "L10", "scene": "measure", "text": "Then you measure. One qubit, a hundred shots. Fifty-five say Bohr.", "say": "Then, you measure. One qubit. A hundred shots. Fifty-five say Bohr."},
+ {"id": "L11", "scene": "measure", "text": "The superposition is gone. Looking at it picked one of them.", "say": "The superposition is gone. Looking at it, picked one of them."},
+ {"id": "L12", "scene": "outro", "text": "Entangled. Try it with your own faces at entangled-quantum.vercel.app.", "say": "Entangled. Try it with your own faces, at entangled quantum, dot vercel, dot app."}
+]
